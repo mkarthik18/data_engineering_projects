@@ -1,0 +1,23 @@
+Project Level 1: The "No-Memory" ETL Engine
+The Standard Approach (The 99%): Load a CSV file into Pandas (df = pd.read_csv), clean it, and save it. Why this fails: If the file is 100GB and your RAM is 16GB, your laptop crashes.
+
+The Top 1% Approach: Build a pure Python file processor that can handle infinite data volume using constant memory (Streaming).
+
+The Project Brief
+Goal: Build a CLI tool that ingests a massive CSV file, filters rows based on a condition, transforms columns, and writes the output to JSONL (JSON Lines) format.
+
+The "Toughest Path" Constraints (Strict Rules)
+No Pandas allowed. You must use Python's built-in csv and json libraries.
+
+Memory Limit: Your program must never use more than 50MB of RAM, even if processing a 10GB file.
+
+Type Hinting: Every function must have strict Python type hints (List, Dict, Iterator).
+
+Error Handling: If one row is corrupt, the program cannot crash. It must log the error to a separate bad_records.log and continue.
+
+What You Will Learn
+Generators & Iterators: How to process data lazily (one row at a time) vs. eagerly (loading all at once).
+
+File I/O Buffering: How reading from disk actually works.
+
+Exception Handling: Building resilient pipelines that don't fail at 3 AM.
